@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint": "prettier --write . && eslint main.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
     "@eslint/js": "^9.16.0",
     "eslint": "^9.16.0",
     "globals": "^15.13.0",
+    "husky": "^9.1.7",
     "prettier": "3.4.1"
   }
 }
