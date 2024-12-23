@@ -1,36 +1,45 @@
-let user = 'John Doe';
-console.log(user);
-const student = 'Dmitry Carrot';
-console.log(student);
-user = student;
-console.log(user); // expected output: 'Dmitry Carrot'
-
-let test = 1;
-test++;
-test += '1';
-console.log(test); // expected output: '21'
-console.log(--test); // expected output: 20
-test = !!test;
-console.log(test); // expected output: true
-
-let list = [2, 3, 5, 8];
-let product = 1;
-for (let i = 0; i < list.length; i++) {
-  product *= list[i];
-}
-console.log(product);
-
-list = [2, 5, 8, 15, 0, 6, 20, 3];
-console.log('5 < num < 10');
-for (let i = 0; i < list.length; i++) {
-  if (5 < list[i] && list[i] < 10) {
-    console.log(list[i]);
+const palindrome = (string) => {
+  const length = string.length;
+  for (let i = 0; i < length; i++) {
+    if (string[i] !== string[length - i - 1]) {
+      return false;
+    }
   }
-}
+  return true;
+};
 
-console.log('Num index is even:');
-for (let i = 0; i < list.length; i++) {
-  if (list[i] % 2 === 0) {
-    console.log(list[i]);
+const min = (a, b) => {
+  return a < b ? a : b;
+};
+
+const max = (a, b) => {
+  if (a < b) {
+    return b;
+  } else {
+    return a;
   }
-}
+};
+
+const zero = (arr) => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i].toString();
+    let newNum = '';
+    for (let j = 0; j < num.length; j++) {
+      if (num[j] === '0') {
+        newNum += 'zero';
+        continue;
+      }
+      newNum += num[j];
+    }
+    newArr.push(newNum);
+  }
+  return newArr;
+};
+
+console.log(palindrome('шалаш')); // true
+console.log(palindrome('абрикос')); // false
+console.log(min(3, 4)); // 3
+console.log(max(3, 4)); // 4
+const array = [42, 63, 30, 19, 77, 100, 1, 70, 31, 20];
+console.log(zero(array)); // ['42', '63', '3zero', '19', '77', '1zerozero', '1', '7zero', '31', '2zero']
