@@ -1,4 +1,4 @@
-const sum = (num1) => {
+export const sum = (num1) => {
   return (num2) => {
     return num1 + num2;
   };
