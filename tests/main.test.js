@@ -1,5 +1,5 @@
 import { randNumber } from '@ngneat/falso';
-import { sum, getColor, colors } from '../src/main';
+import { colors, getColor, sum } from '../src/functions';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();
@@ -11,7 +11,7 @@ test('sum(5)(4) must be equal to 9', () => {
   expect(sum(5)(4)).toBe(9);
 });
 
-test('getColor returns correct color based on index', () => {
+test('funcs returns correct color based on index', () => {
   expect(getColor(0)).toBe('magenta');
   expect(getColor(1)).toBe('cyan');
   expect(getColor(2)).toBe('firebrick');
