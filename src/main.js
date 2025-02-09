@@ -1,7 +1,9 @@
-import { convertDate, getColor, sum } from './functions.js';
+import { convertDate, getColor, searchHotel, sum } from './functions.js';
 
 const date = '2020-11-26';
 console.log(convertDate(date)); // '26.11.2020'
+
+console.log(searchHotel('hotel'));
 
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
