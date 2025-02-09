@@ -1,5 +1,11 @@
-import { randNumber, randBetweenDate } from '@ngneat/falso';
-import { colors, convertDate, getColor, sum } from '../src/functions';
+import { randNumber } from '@ngneat/falso';
+import {
+  colors,
+  convertDate,
+  getColor,
+  searchHotel,
+  sum,
+} from '../src/functions';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();
@@ -27,4 +33,23 @@ test('convertDate returns correct date', () => {
   expect(convertDate('1998-1-2')).toBe('02.01.1998');
   expect(convertDate('2003-11-5')).toBe('05.11.2003');
   expect(convertDate('1493-9-30')).toBe('30.09.1493');
+});
+
+test('searchHotel returns correct hotel data', () => {
+  expect(searchHotel('hotel')).toEqual([
+    'Russia, Saint Petersburg, Hotel Leopold',
+    'Marocco, Ourika, Rokoko Hotel',
+    'Germany, Berlin, Hotel Rehberge Berlin Mitte',
+  ]);
+  expect(searchHotel('a')).toEqual([
+    'Russia, Saint Petersburg, Hotel Leopold',
+    'Spain, Santa Cruz de Tenerife, Apartment Sunshine',
+    'Slowakia, Vysokie Tatry, Villa Kunerad',
+    'Germany, Berlin, Hostel Friendship',
+    'Indonesia, Bali, Ubud Bali Resort&SPA',
+    'Netherlands, Rotterdam, King Kong Hostel',
+    'Marocco, Ourika, Rokoko Hotel',
+    'Germany, Berlin, Hotel Rehberge Berlin Mitte',
+  ]);
+  expect(searchHotel('Scotland')).toEqual([]);
 });
