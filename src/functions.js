@@ -1,8 +1,8 @@
 import { data } from './hotelsArray.js';
 
 export const convertDate = (date) => {
-  const re = /(\d{4})-(\d{2})-(\d{2})/;
-  return date.replace(re, '$3.$2.$1');
+  const re = /(\d{4})-(\d{1,2})-(\d{1,2})/;
+  return date.replace(re, '$3.$2.$1').replace(/(\b\d\b)/g, '0$1');
 };
 
 export const searchHotel = (str) => {
