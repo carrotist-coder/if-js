@@ -9,15 +9,12 @@ export const convertDate = (date) => {
 };
 
 export const searchHotel = (str) => {
-  let hotels = [];
   const re = new RegExp(str, 'i');
-  for (let i = 0; i < data.length; i++) {
-    const place = [data[i].country, data[i].city, data[i].hotel].join(', ');
-    if (re.test(place)) {
-      hotels.push(place);
-    }
-  }
-  return hotels;
+  return data
+    .filter((hotel) =>
+      re.test([hotel.country, hotel.city, hotel.hotel].join(', ')),
+    )
+    .map((hotel) => [hotel.country, hotel.city, hotel.hotel].join(', '));
 };
 
 export const sum = (num1) => {
