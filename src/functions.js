@@ -3,6 +3,19 @@ import { data } from './hotelsArray.js';
 export const palindrome = (string) =>
   string === string.split('').reverse().join('');
 
+export const groupCities = () => {
+  return data.reduce((acc, item) => {
+    if (!acc[item.country]) {
+      acc[item.country] = [];
+    }
+    // Чтобы не повторялись города
+    if (!acc[item.country].includes(item.city)) {
+      acc[item.country].push(item.city);
+    }
+    return acc;
+  }, {});
+};
+
 export const convertDate = (date) => {
   const re = /(\d{4})-(\d{1,2})-(\d{1,2})/;
   return date.replace(re, '$3.$2.$1').replace(/(\b\d\b)/g, '0$1');

@@ -3,6 +3,7 @@ import {
   colors,
   convertDate,
   getColor,
+  groupCities,
   palindrome,
   searchHotel,
   sum,
@@ -61,4 +62,16 @@ test('palindrome works correctly', () => {
   expect(palindrome('арозаупаланалапуазора')).toBe(true);
   expect(palindrome(')(()')).toBe(true);
   expect(palindrome('микроскоп')).toBe(false);
+});
+
+test('groupCities returns correct object', () => {
+  expect(groupCities()).toEqual({
+    Germany: ['Berlin'],
+    Indonesia: ['Bali'],
+    Marocco: ['Ourika'],
+    Netherlands: ['Rotterdam'],
+    Russia: ['Saint Petersburg'],
+    Slowakia: ['Vysokie Tatry'],
+    Spain: ['Santa Cruz de Tenerife'],
+  });
 });
