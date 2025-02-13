@@ -1,5 +1,8 @@
 import { data } from './hotelsArray.js';
 
+export const palindrome = (string) =>
+  string === string.split('').reverse().join('');
+
 export const convertDate = (date) => {
   const re = /(\d{4})-(\d{1,2})-(\d{1,2})/;
   return date.replace(re, '$3.$2.$1').replace(/(\b\d\b)/g, '0$1');

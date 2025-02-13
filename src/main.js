@@ -1,4 +1,13 @@
-import { convertDate, getColor, searchHotel, sum } from './functions.js';
+import {
+  convertDate,
+  getColor,
+  palindrome,
+  searchHotel,
+  sum,
+} from './functions.js';
+
+console.log('шалаш: ', palindrome('шалаш')); // true
+console.log('яблоко: ', palindrome('яблоко')); // false
 
 const date = '2020-11-26';
 console.log(convertDate(date)); // '26.11.2020'

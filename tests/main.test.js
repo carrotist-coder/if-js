@@ -3,6 +3,7 @@ import {
   colors,
   convertDate,
   getColor,
+  palindrome,
   searchHotel,
   sum,
 } from '../src/functions';
@@ -52,4 +53,12 @@ test('searchHotel returns correct hotel data', () => {
     'Germany, Berlin, Hotel Rehberge Berlin Mitte',
   ]);
   expect(searchHotel('Scotland')).toEqual([]);
+});
+
+test('palindrome works correctly', () => {
+  expect(palindrome('шалаш')).toBe(true);
+  expect(palindrome('яблоко')).toBe(false);
+  expect(palindrome('арозаупаланалапуазора')).toBe(true);
+  expect(palindrome(')(()')).toBe(true);
+  expect(palindrome('микроскоп')).toBe(false);
 });
