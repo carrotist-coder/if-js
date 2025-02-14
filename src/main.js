@@ -1,20 +1,9 @@
-export const sum = (num1) => {
-  return (num2) => {
-    return num1 + num2;
-  };
-};
+import { convertDate, getColor, searchHotel, sum } from './functions.js';
 
-export const colors = [
-  'magenta',
-  'cyan',
-  'firebrick',
-  'springgreen',
-  'skyblue',
-];
+const date = '2020-11-26';
+console.log(convertDate(date)); // '26.11.2020'
 
-export function getColor(index) {
-  return colors[index % colors.length];
-}
+console.log(searchHotel('hotel'));
 
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');

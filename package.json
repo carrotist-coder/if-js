@@ -7,7 +7,7 @@
     "test": "jest",
     "prepare": "husky",
     "lint": "prettier --write . && eslint src/main.js",
-    "prepublish": "npm run lint"
+    "prepublish": "npm run lint && npm test"
   },
   "keywords": [],
   "author": "",
