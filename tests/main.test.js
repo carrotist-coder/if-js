@@ -2,7 +2,10 @@ import { randNumber } from '@ngneat/falso';
 import {
   colors,
   convertDate,
+  getCalendarMonth,
   getColor,
+  groupCities,
+  palindrome,
   searchHotel,
   sum,
 } from '../src/functions';
@@ -52,4 +55,34 @@ test('searchHotel returns correct hotel data', () => {
     'Germany, Berlin, Hotel Rehberge Berlin Mitte',
   ]);
   expect(searchHotel('Scotland')).toEqual([]);
+});
+
+test('palindrome works correctly', () => {
+  expect(palindrome('шалаш')).toBe(true);
+  expect(palindrome('яблоко')).toBe(false);
+  expect(palindrome('арозаупаланалапуазора')).toBe(true);
+  expect(palindrome(')(()')).toBe(true);
+  expect(palindrome('микроскоп')).toBe(false);
+});
+
+test('groupCities returns correct object', () => {
+  expect(groupCities()).toEqual({
+    Germany: ['Berlin'],
+    Indonesia: ['Bali'],
+    Marocco: ['Ourika'],
+    Netherlands: ['Rotterdam'],
+    Russia: ['Saint Petersburg'],
+    Slowakia: ['Vysokie Tatry'],
+    Spain: ['Santa Cruz de Tenerife'],
+  });
+});
+
+test('getCalendarMonth returns correct month', () => {
+  expect(getCalendarMonth(30, 7, 4)).toEqual([
+    [27, 28, 29, 30, 1, 2, 3],
+    [4, 5, 6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15, 16, 17],
+    [18, 19, 20, 21, 22, 23, 24],
+    [25, 26, 27, 28, 29, 30, 1],
+  ]);
 });
