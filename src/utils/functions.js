@@ -1,4 +1,4 @@
-import { data } from './hotelsArray.js';
+import { data } from '../consts/hotelsArray.js';
 
 export const palindrome = (string) =>
   string === string.split('').reverse().join('');

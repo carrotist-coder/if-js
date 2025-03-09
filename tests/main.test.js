@@ -8,7 +8,7 @@ import {
   palindrome,
   searchHotel,
   sum,
-} from '../src/functions';
+} from '../src/utils/functions';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();

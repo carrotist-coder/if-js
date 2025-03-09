@@ -6,7 +6,7 @@ import {
   palindrome,
   searchHotel,
   sum,
-} from './functions.js';
+} from './utils/functions.js';
 
 console.log('шалаш: ', palindrome('шалаш')); // true
 console.log('яблоко: ', palindrome('яблоко')); // false
