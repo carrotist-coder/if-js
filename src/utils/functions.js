@@ -47,10 +47,18 @@ export const groupCities = () => {
 export const getCalendarMonth = (daysInMonth, daysInWeek, dayOfWeek) => {
   const month = [];
   let count = daysInMonth - dayOfWeek;
+  let notCurrentMonth = true;
   while (count <= 2 * daysInMonth) {
     const week = [];
     for (let i = 0; i < daysInWeek; i++) {
-      week.push((count++ % daysInMonth) + 1);
+      if (count % daysInMonth === 0) {
+        notCurrentMonth = !notCurrentMonth;
+      }
+      const day = {};
+      day.dayOfMonth = ((count++ % daysInMonth) + 1);
+      day.notCurrentMonth = notCurrentMonth;
+      day.selectedDay = false;
+      week.push(day);
     }
     month.push(week);
   }
