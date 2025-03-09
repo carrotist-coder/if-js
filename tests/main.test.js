@@ -2,6 +2,7 @@ import { randNumber } from '@ngneat/falso';
 import {
   colors,
   convertDate,
+  deepEqual,
   getCalendarMonth,
   getColor,
   groupCities,
@@ -9,6 +10,7 @@ import {
   searchHotel,
   sum,
 } from '../src/utils/functions';
+import { obj1, obj2, obj3 } from '../src/consts/hotelsArray.js';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();
@@ -85,4 +87,10 @@ test('getCalendarMonth returns correct month', () => {
     [18, 19, 20, 21, 22, 23, 24],
     [25, 26, 27, 28, 29, 30, 1],
   ]);
+});
+
+test('deepEqual works correctly', () => {
+  expect(deepEqual(obj1, obj2)).toBe(true);
+  expect(deepEqual(obj1, obj3)).toBe(false);
+  expect(deepEqual(obj2, obj3)).toBe(false);
 });

@@ -1,5 +1,24 @@
 import { data } from '../consts/hotelsArray.js';
 
+export const deepEqual = (object1, object2) => {
+  for (const [key, value] of Object.entries(object1)) {
+    if (key in object2) {
+      if (typeof object2[key] === 'object') {
+        if (!deepEqual(value, object2[key])) {
+          return false;
+        }
+      } else {
+        if (value !== object2[key]) {
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
+
 export const palindrome = (string) =>
   string === string.split('').reverse().join('');
 
