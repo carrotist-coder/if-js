@@ -1,4 +1,23 @@
-import { data } from './hotelsArray.js';
+import { data } from '../consts/hotelsArray.js';
+
+export const deepEqual = (object1, object2) => {
+  for (const [key, value] of Object.entries(object1)) {
+    if (key in object2) {
+      if (typeof object2[key] === 'object') {
+        if (!deepEqual(value, object2[key])) {
+          return false;
+        }
+      } else {
+        if (value !== object2[key]) {
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
 
 export const palindrome = (string) =>
   string === string.split('').reverse().join('');
@@ -28,10 +47,18 @@ export const groupCities = () => {
 export const getCalendarMonth = (daysInMonth, daysInWeek, dayOfWeek) => {
   const month = [];
   let count = daysInMonth - dayOfWeek;
+  let notCurrentMonth = true;
   while (count <= 2 * daysInMonth) {
     const week = [];
     for (let i = 0; i < daysInWeek; i++) {
-      week.push((count++ % daysInMonth) + 1);
+      if (count % daysInMonth === 0) {
+        notCurrentMonth = !notCurrentMonth;
+      }
+      const day = {};
+      day.dayOfMonth = ((count++ % daysInMonth) + 1);
+      day.notCurrentMonth = notCurrentMonth;
+      day.selectedDay = false;
+      week.push(day);
     }
     month.push(week);
   }
