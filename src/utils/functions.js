@@ -1,5 +1,7 @@
 import { data } from '../consts/hotelsArray.js';
 
+export const YEAR = 2020;
+
 export const deepEqual = (object1, object2) => {
   for (const [key, value] of Object.entries(object1)) {
     if (key in object2) {
