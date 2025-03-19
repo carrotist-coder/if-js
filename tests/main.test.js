@@ -11,6 +11,9 @@ import {
   sum,
 } from '../src/utils/functions';
 import { obj1, obj2, obj3 } from '../src/consts/hotelsArray.js';
+import { Student, Students } from '../src/entities/Student';
+import { studentsData } from '../src/consts/studentsData';
+import User from '../src/entities/User';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();
@@ -133,4 +136,24 @@ test('deepEqual works correctly', () => {
   expect(deepEqual(obj1, obj2)).toBe(true);
   expect(deepEqual(obj1, obj3)).toBe(false);
   expect(deepEqual(obj2, obj3)).toBe(false);
+});
+
+test('User, Student, Students classes methods work correctly', () => {
+  const user = new User('Dmitry', 'Carrot');
+  expect(user.fullName).toEqual('Dmitry Carrot');
+  const student = new Student({
+    admissionYear: 2019,
+    courseName: 'JavaScript',
+    firstName: 'Dmitry',
+    lastName: 'Carrot',
+  });
+  expect(student.fullName).toEqual('Dmitry Carrot');
+  expect(student.course).toEqual(1);
+  const students = new Students(studentsData);
+  expect(students.getInfo()).toEqual([
+    'Василий Петров - Java, 1 курс',
+    'Николай Петров - Android, 1 курс',
+    'Иван Иванов - JavaScript, 2 курс',
+    'Александр Федоров - Python, 3 курс',
+  ]);
 });
