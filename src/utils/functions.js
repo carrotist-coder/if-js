@@ -46,10 +46,9 @@ export const groupCities = () => {
   }, {});
 };
 
-export const getCalendarMonth = () => {
+export const getCalendarMonth = (today = new Date()) => {
   const daysInWeek = 7;
 
-  const today = new Date();
   const todayYear = today.getFullYear();
   const todayMonth = today.getMonth();
   const todayDate = today.getDate();
