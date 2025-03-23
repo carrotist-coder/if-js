@@ -1,6 +1,5 @@
 import { randNumber } from '@ngneat/falso';
 import {
-  colors,
   convertDate,
   deepEqual,
   getCalendarMonth,
@@ -26,13 +25,11 @@ test('sum(5)(4) must be equal to 9', () => {
 });
 
 test('getColor returns correct color based on index', () => {
-  expect(getColor(0)).toBe('magenta');
-  expect(getColor(1)).toBe('cyan');
-  expect(getColor(2)).toBe('firebrick');
-  expect(getColor(3)).toBe('springgreen');
-  expect(getColor(4)).toBe('skyblue');
-  const randColor = randNumber() % colors.length;
-  expect(getColor(randColor)).toBe(colors[randColor]);
+  expect(getColor()).toBe('magenta');
+  expect(getColor()).toBe('cyan');
+  expect(getColor()).toBe('firebrick');
+  expect(getColor()).toBe('springgreen');
+  expect(getColor()).toBe('skyblue');
 });
 
 test('convertDate returns correct date', () => {

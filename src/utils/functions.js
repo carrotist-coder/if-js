@@ -78,14 +78,17 @@ export const sum = (num1) => {
   };
 };
 
-export const colors = [
-  'magenta',
-  'cyan',
-  'firebrick',
-  'springgreen',
-  'skyblue',
-];
+export const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  index: -1,
+  [Symbol.iterator]() {
+    return this;
+  },
+  next() {
+    return ++this.index % data.length;
+  },
+};
 
-export function getColor(index) {
-  return colors[index % colors.length];
+export function getColor() {
+  return colors.data[colors.next()];
 }
