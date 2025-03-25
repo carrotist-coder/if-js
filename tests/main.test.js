@@ -1,6 +1,5 @@
 import { randNumber } from '@ngneat/falso';
 import {
-  colors,
   convertDate,
   deepEqual,
   getCalendarMonth,
@@ -26,13 +25,11 @@ test('sum(5)(4) must be equal to 9', () => {
 });
 
 test('getColor returns correct color based on index', () => {
-  expect(getColor(0)).toBe('magenta');
-  expect(getColor(1)).toBe('cyan');
-  expect(getColor(2)).toBe('firebrick');
-  expect(getColor(3)).toBe('springgreen');
-  expect(getColor(4)).toBe('skyblue');
-  const randColor = randNumber() % colors.length;
-  expect(getColor(randColor)).toBe(colors[randColor]);
+  expect(getColor()).toBe('magenta');
+  expect(getColor()).toBe('cyan');
+  expect(getColor()).toBe('firebrick');
+  expect(getColor()).toBe('springgreen');
+  expect(getColor()).toBe('skyblue');
 });
 
 test('convertDate returns correct date', () => {
@@ -83,51 +80,272 @@ test('groupCities returns correct object', () => {
 });
 
 test('getCalendarMonth returns correct month', () => {
-  expect(getCalendarMonth(30, 7, 4)).toEqual([
+  const testDate = new Date(2023, 6, 30);
+  const result = getCalendarMonth(testDate);
+  expect(result).toEqual([
     [
-      { dayOfMonth: 27, notCurrentMonth: true, selectedDay: false },
-      { dayOfMonth: 28, notCurrentMonth: true, selectedDay: false },
-      { dayOfMonth: 29, notCurrentMonth: true, selectedDay: false },
-      { dayOfMonth: 30, notCurrentMonth: true, selectedDay: false },
-      { dayOfMonth: 1, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 2, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 3, notCurrentMonth: false, selectedDay: false },
+      {
+        dayOfMonth: 26,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 27,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 28,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 29,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 30,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 1,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 2,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
     ],
     [
-      { dayOfMonth: 4, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 5, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 6, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 7, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 8, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 9, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 10, notCurrentMonth: false, selectedDay: false },
+      {
+        dayOfMonth: 3,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 4,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 5,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 6,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 7,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 8,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 9,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
     ],
     [
-      { dayOfMonth: 11, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 12, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 13, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 14, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 15, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 16, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 17, notCurrentMonth: false, selectedDay: false },
+      {
+        dayOfMonth: 10,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 11,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 12,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 13,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 14,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 15,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 16,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
     ],
     [
-      { dayOfMonth: 18, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 19, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 20, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 21, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 22, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 23, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 24, notCurrentMonth: false, selectedDay: false },
+      {
+        dayOfMonth: 17,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 18,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 19,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 20,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 21,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 22,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 23,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
     ],
     [
-      { dayOfMonth: 25, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 26, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 27, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 28, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 29, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 30, notCurrentMonth: false, selectedDay: false },
-      { dayOfMonth: 1, notCurrentMonth: true, selectedDay: false },
+      {
+        dayOfMonth: 24,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 25,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 26,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 27,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 28,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 29,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 30,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: true,
+      },
+    ],
+    [
+      {
+        dayOfMonth: 31,
+        notCurrentMonth: false,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 1,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 2,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 3,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 4,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 5,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
+      {
+        dayOfMonth: 6,
+        notCurrentMonth: true,
+        selectedDay: false,
+        currentDay: false,
+      },
     ],
   ]);
 });

@@ -46,20 +46,34 @@ export const groupCities = () => {
   }, {});
 };
 
-export const getCalendarMonth = (daysInMonth, daysInWeek, dayOfWeek) => {
+export const getCalendarMonth = (today = new Date()) => {
+  const daysInWeek = 7;
+
+  const todayYear = today.getFullYear();
+  const todayMonth = today.getMonth();
+  const todayDate = today.getDate();
+
+  const daysInMonth = new Date(todayYear, todayMonth + 1, 0).getDate();
+  const firstDayOfMonth = new Date(todayYear, todayMonth, 0).getDay();
+  const daysInPreviousMonth = new Date(todayYear, todayMonth, 0).getDate();
+
   const month = [];
-  let count = daysInMonth - dayOfWeek;
-  let notCurrentMonth = true;
-  while (count <= 2 * daysInMonth) {
+  let count = 1 - firstDayOfMonth;
+
+  while (count <= daysInMonth) {
     const week = [];
     for (let i = 0; i < daysInWeek; i++) {
-      if (count % daysInMonth === 0) {
-        notCurrentMonth = !notCurrentMonth;
-      }
       const day = {};
-      day.dayOfMonth = (count++ % daysInMonth) + 1;
-      day.notCurrentMonth = notCurrentMonth;
+      if (count > 0 && count <= daysInMonth) {
+        day.dayOfMonth = count;
+        day.notCurrentMonth = false;
+      } else {
+        day.dayOfMonth =
+          count <= 0 ? count + daysInPreviousMonth : count - daysInMonth;
+        day.notCurrentMonth = true;
+      }
       day.selectedDay = false;
+      day.currentDay = count++ === todayDate && !day.notCurrentMonth;
       week.push(day);
     }
     month.push(week);
@@ -78,14 +92,17 @@ export const sum = (num1) => {
   };
 };
 
-export const colors = [
-  'magenta',
-  'cyan',
-  'firebrick',
-  'springgreen',
-  'skyblue',
-];
+export const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  index: -1,
+  [Symbol.iterator]() {
+    return this;
+  },
+  next() {
+    return ++this.index % data.length;
+  },
+};
 
-export function getColor(index) {
-  return colors[index % colors.length];
+export function getColor() {
+  return colors.data[colors.next()];
 }
