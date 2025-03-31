@@ -332,8 +332,12 @@ main {
   gap: 16px;
 }
 
+.homes-guests .cards {
+  flex-wrap: wrap;
+}
+
 .homes-guests-card {
-  flex-basis: 25%;
+  flex-basis: calc(25% - 16px);
   text-align: center;
   position: relative;
 }

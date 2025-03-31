@@ -28,9 +28,9 @@ export const searchHotel = (str) => {
   const re = new RegExp(str, 'i');
   return data
     .filter((hotel) =>
-      re.test([hotel.country, hotel.city, hotel.hotel].join(', ')),
+      re.test([hotel.country, hotel.city, hotel.name].join(', ')),
     )
-    .map((hotel) => [hotel.country, hotel.city, hotel.hotel].join(', '));
+    .map((hotel) => [hotel.country, hotel.city, hotel.name].join(', '));
 };
 
 export const groupCities = () => {
