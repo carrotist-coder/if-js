@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="src/images/favicons/favicon32.ico" rel="icon" />
+    <link href="src/css/style.css" rel="stylesheet" />
+    <title>TripHouse</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <svg class="header__logo">
+          <use href="./images/sprite.svg#logo"></use>
+        </svg>
+        <div class="header-menu">
+          <div class="header-menu__stays header-menu__text">Stays</div>
+          <div class="header-menu__attractions header-menu__text">
+            Attractions
+          </div>
+          <svg class="header-menu__night">
+            <use href="./images/sprite.svg#night-icon"></use>
+          </svg>
+          <svg class="header-menu__account">
+            <use href="./images/sprite.svg#account-icon"></use>
+          </svg>
+          <svg class="header-menu__hamburger">
+            <use href="./images/sprite.svg#hamburger-menu"></use>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="triphouse">
+        <div class="triphouse-content">
+          <div class="triphouse__heading">Discover stays</div>
+          <div class="triphouse__heading">to live, work or just relax</div>
+
+          <form class="search-form">
+            <label
+              class="search-form__label search-form__label-1"
+              for="destination"
+              >Your destination or hotel name</label
+            >
+            <label class="search-form__label search-form__label-2" for="date"
+              >Check-in — Check-out</label
+            >
+            <div class="search-inputs">
+              <div
+                class="search-inputs__input-1 search-inputs__input-1--relative"
+              >
+                <svg class="search-inputs__search-icon">
+                  <use href="./images/sprite.svg#search-icon"></use>
+                </svg>
+                <input
+                  class="search-inputs__input-md-1"
+                  id="destination"
+                  type="text"
+                  name="destination"
+                  value="New York"
+                />
+              </div>
+              <div class="search-input-md search-input-md-2-in">
+                <label class="search-form__label-md" for="date-in"
+                  >Check-in</label
+                >
+                <input
+                  class="search-inputs__input-md"
+                  id="date-in"
+                  type="date"
+                  name="date-in"
+                  value="Tue 15 Sept 2020"
+                />
+              </div>
+              <div class="search-input-md search-input-md-2-out">
+                <label class="search-form__label-md" for="date-out"
+                  >Check-out</label
+                >
+                <input
+                  class="search-inputs__input-md"
+                  id="date-out"
+                  type="date"
+                  name="date-out"
+                  value="Sat 19 Sept 2020"
+                />
+              </div>
+              <input
+                class="search-inputs__input-2"
+                id="date"
+                type="date"
+                name="date"
+                value="Tue 15 Sept — Sat 19 Sept"
+              />
+              <div class="search-input-md search-inputs__input-3-adults">
+                <label class="search-form__label-md" for="adults">Adults</label>
+                <input
+                  class="search-inputs__input-3 search-inputs__input-md-3 search-inputs__input-md"
+                  id="adults"
+                  type="number"
+                  name="adults"
+                  value="2"
+                />
+              </div>
+              <div class="search-input-md search-inputs__input-3-children">
+                <label class="search-form__label-md" for="children"
+                  >Children</label
+                >
+                <input
+                  class="search-inputs__input-3 search-inputs__input-md-3 search-inputs__input-md"
+                  id="children"
+                  type="number"
+                  name="children"
+                  value="0"
+                />
+              </div>
+              <div class="search-input-md search-inputs__input-3-rooms">
+                <label class="search-form__label-md" for="rooms">Rooms</label>
+                <input
+                  class="search-inputs__input-3 search-inputs__input-md-3 search-inputs__input-md"
+                  id="rooms"
+                  type="number"
+                  name="rooms"
+                  value="1"
+                />
+              </div>
+              <label class="search-form__label" for="description"></label>
+              <input
+                class="search-inputs__input-3"
+                id="description"
+                type="text"
+                name="description"
+                value="2 Adults — 0 Children — 1 Room"
+              />
+              <button class="search-form__button">Search</button>
+            </div>
+          </form>
+          <div class="triphouse-apps">
+            <img
+              src="src/images/icons/google-play-logo.png"
+              alt="Get it on Google Play button"
+            />
+            <img
+              src="src/images/icons/app-store-logo.png"
+              alt="Get it on App Store button"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="container advantages">
+        <div class="advantages-heading">
+          <h1 class="advantages-heading__text heading__text">
+            What do we offer
+          </h1>
+        </div>
+        <div class="cards">
+          <div class="advantages-card col-lg-3 col-md-6 col-sm-6">
+            <svg class="advantages-card__svg">
+              <use href="./images/sprite.svg#headset-icon"></use>
+            </svg>
+            <p class="advantages-card__text">Support 24/7</p>
+          </div>
+          <div class="advantages-card col-lg-3 col-md-6 col-sm-6">
+            <svg class="advantages-card__svg">
+              <use href="./images/sprite.svg#forum-icon"></use>
+            </svg>
+            <p class="advantages-card__text">Communicate directly</p>
+          </div>
+          <div class="advantages-card col-lg-3 col-md-6 col-sm-6">
+            <svg class="advantages-card__svg">
+              <use href="./images/sprite.svg#devices-icon"></use>
+            </svg>
+            <p class="advantages-card__text">Book online</p>
+          </div>
+          <div class="advantages-card col-lg-3 col-md-6 col-sm-6">
+            <svg class="advantages-card__svg">
+              <use href="./images/sprite.svg#thumb-up-icon"></use>
+            </svg>
+            <p class="advantages-card__text">Real guest reviews</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="homes-guests">
+        <div class="container">
+          <div class="heading">
+            <h1 class="heading__text">Homes guests loves</h1>
+          </div>
+          <div class="cards"></div>
+          <div class="homes-guests-arrow-button">
+            <div class="homes-guests-arrow-button__circle"></div>
+            <svg class="homes-guests-arrow-button__icon">
+              <use href="./images/sprite.svg#arrow-icon"></use>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="container destinations">
+        <div class="heading">
+          <h1 class="heading__text">The best destinations</h1>
+        </div>
+        <div class="destinations-tabs">
+          <div class="destinations-tabs__tab destinations-tabs__tab-1">
+            Regions
+          </div>
+          <div class="destinations-tabs__tab destinations-tabs__tab-2">
+            Cities
+          </div>
+          <div class="destinations-tabs__tab destinations-tabs__tab-3">
+            Places of interest
+          </div>
+          <div class="destinations-tabs__tab destinations-tabs__tab-3--md">
+            Places
+          </div>
+        </div>
+        <div class="cards">
+          <div class="destinations-card">
+            <figure>
+              <img src="src/images/dest1.png" alt="Maldives" />
+              <div class="destinations-card__book">Book now</div>
+              <figcaption>
+                <p>Maldives</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="destinations-card">
+            <figure>
+              <img src="src/images/dest2.png" alt="Spain" />
+              <div class="destinations-card__book">Book now</div>
+              <figcaption>
+                <p>Spain</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="destinations-card">
+            <figure>
+              <img src="src/images/dest3.png" alt="Norway" />
+              <div class="destinations-card__book">Book now</div>
+              <figcaption>
+                <p>Norway</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="destinations-card">
+            <figure>
+              <img src="src/images/dest4.png" alt="Island" />
+              <div class="destinations-card__book">Book now</div>
+              <figcaption>
+                <p>Island</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="destinations-arrow-button">
+          <div class="destinations-arrow-button__circle"></div>
+          <svg class="destinations-arrow-button__icon">
+            <use href="./images/sprite.svg#arrow-icon"></use>
+          </svg>
+        </div>
+      </section>
+
+      <section class="sign-up">
+        <svg class="sign-up__close-icon">
+          <use href="./images/sprite.svg#close-icon"></use>
+        </svg>
+        <div class="sign-up-user-icon">
+          <svg class="sign-up-user-icon__icon">
+            <use href="./images/sprite.svg#user-icon"></use>
+          </svg>
+        </div>
+        <div class="sign-up-content">
+          <div class="sign-up-content-title">
+            <h3 class="sign-up-content-title__text">
+              Sign up and get 20% off your first booking
+            </h3>
+          </div>
+          <div class="sign-up-content__button">Sign up</div>
+        </div>
+        <div class="sign-up-logo-icon">
+          <svg class="sign-up-logo-icon__icon">
+            <use href="./images/sprite.svg#logo-square"></use>
+          </svg>
+        </div>
+        <h3 class="sign-up-content-title__text--md">
+          Sign up in the app and get 20% off your first booking
+        </h3>
+        <div class="sign-up-content__install">Install</div>
+      </section>
+
+      <section class="container reviews">
+        <div class="heading">
+          <h1 class="heading__text">Guests reviews</h1>
+        </div>
+        <div class="cards">
+          <div class="reviews-card">
+            <figure class="reviews-card">
+              <img src="src/images/rev1.png" alt="Ubud Bali Resort&SPA" />
+              <figcaption class="reviews-card-content">
+                <div class="reviews-card-price">
+                  <div class="reviews-card-price__text">From 250 USD</div>
+                </div>
+                <div class="reviews-card-content__title">
+                  <p>Ubud Bali Resort&SPA</p>
+                  <p>Bali, Indonesia</p>
+                </div>
+                <div class="reviews-card-score">
+                  <div class="reviews-card-score__score">9,4</div>
+                  <div class="reviews-card-score__reviews">1324 reviews</div>
+                </div>
+              </figcaption>
+            </figure>
+            <article class="reviews-card-comment">
+              <div class="reviews-card-comment-user">
+                <svg class="reviews-card-comment-user__icon">
+                  <use href="./images/sprite.svg#account-icon-gray"></use>
+                </svg>
+                <div class="reviews-card-comment-user-info">
+                  <div class="reviews-card-comment-user-info__name">
+                    Hanna Ivanova
+                  </div>
+                  <div class="reviews-card-comment-user-info__destination">
+                    🇺🇦 Ukraine
+                  </div>
+                </div>
+              </div>
+              <div class="reviews-card-comment-description">
+                Great location, really pleasant and clean rooms, but the thing
+                that makes this such a good place to stay are the staff. All of
+                the people are incredibly helpful and generous with their time
+                and advice.
+              </div>
+            </article>
+            <div class="reviews-card-switches-md">
+              <div class="reviews-card-switches-md__circle"></div>
+              <div class="reviews-card-switches-md__circle"></div>
+              <div class="reviews-card-switches-md__circle"></div>
+              <div class="reviews-card-switches-md__circle"></div>
+            </div>
+          </div>
+
+          <div class="reviews-card">
+            <figure class="reviews-card">
+              <img src="src/images/rev2.png" alt="King Kong Hostel" />
+              <figcaption class="reviews-card-content">
+                <div class="reviews-card-price">
+                  <div class="reviews-card-price__text">From 40 USD</div>
+                </div>
+                <div class="reviews-card-content__title">
+                  <p>King Kong Hostel</p>
+                  <p>Rotterdam, Netherlands</p>
+                </div>
+                <div class="reviews-card-score">
+                  <div class="reviews-card-score__score">8,9</div>
+                  <div class="reviews-card-score__reviews">2016 reviews</div>
+                </div>
+              </figcaption>
+            </figure>
+            <article class="reviews-card-comment">
+              <div class="reviews-card-comment-user">
+                <svg class="reviews-card-comment-user__icon">
+                  <use href="./images/sprite.svg#account-icon-gray"></use>
+                </svg>
+                <div class="reviews-card-comment-user-info">
+                  <div class="reviews-card-comment-user-info__name">
+                    Adam Smith
+                  </div>
+                  <div class="reviews-card-comment-user-info__destination">
+                    🇺🇸 USA
+                  </div>
+                </div>
+              </div>
+              <div class="reviews-card-comment-description">
+                I've been in this hostel for a month and here is the best hostel
+                of all Excellent management of excellent and ethical staff and
+                bedrooms Bathrooms are always clean and excellent<br />Most
+                importantly, those who work here are kind and good-natured.
+              </div>
+            </article>
+          </div>
+
+          <div class="reviews-card">
+            <figure class="reviews-card">
+              <img src="src/images/rev3.png" alt="Rokoko Hotel" />
+              <figcaption class="reviews-card-content">
+                <div class="reviews-card-price">
+                  <div class="reviews-card-price__text">From 100 USD</div>
+                </div>
+                <div class="reviews-card-content__title">
+                  <p>Rokoko Hotel</p>
+                  <p>Ourika, Marocco</p>
+                </div>
+                <div class="reviews-card-score">
+                  <div class="reviews-card-score__score">9,1</div>
+                  <div class="reviews-card-score__reviews">815 reviews</div>
+                </div>
+              </figcaption>
+            </figure>
+            <article class="reviews-card-comment">
+              <div class="reviews-card-comment-user">
+                <svg class="reviews-card-comment-user__icon">
+                  <use href="./images/sprite.svg#account-icon-gray"></use>
+                </svg>
+                <div class="reviews-card-comment-user-info">
+                  <div class="reviews-card-comment-user-info__name">
+                    Anika Messer
+                  </div>
+                  <div class="reviews-card-comment-user-info__destination">
+                    🇩🇪 Germany
+                  </div>
+                </div>
+              </div>
+              <div class="reviews-card-comment-description">
+                Efficient, friendly, professional, and appropriately attentive.
+                Great hotel in a great location. Easy access to all the
+                surrounding historical sites. Staff is fantastic. Will
+                definitely stay at this location during my next stay in Marocco.
+              </div>
+            </article>
+            <div class="reviews-card-arrow-button">
+              <div class="reviews-card-arrow-button__circle"></div>
+              <svg class="reviews-card-arrow-button__icon">
+                <use href="./images/sprite.svg#arrow-icon"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <svg class="footer__logo">
+          <use href="./images/sprite.svg#logo-white"></use>
+        </svg>
+        <div class="footer__text--above-copyright">
+          <p class="footer__text">About</p>
+          <p class="footer__text">How Triphouse works</p>
+          <p class="footer__text">Careers</p>
+          <p class="footer__text">Privacy</p>
+          <p class="footer__text">Terms</p>
+        </div>
+        <div>
+          <p class="footer__text">Property types</p>
+          <p class="footer__text">Guest houses</p>
+          <p class="footer__text">Hotels</p>
+          <p class="footer__text">Apartments</p>
+          <p class="footer__text">Villas</p>
+          <p class="footer__text">Holiday homes</p>
+          <p class="footer__text">Hostels</p>
+        </div>
+        <div>
+          <p class="footer__text">Support</p>
+          <p class="footer__text">Contact Customer Service</p>
+          <p class="footer__text">FAQ</p>
+        </div>
+        <p class="footer__copyright">
+          &#169; 2022Triphouse, Inc. All rights reserved
+        </p>
+      </div>
+    </footer>
+    <script type="module" src="./src/utils/imageRendering.js"></script>
+  </body>
+</html>

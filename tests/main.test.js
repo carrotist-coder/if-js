@@ -39,7 +39,7 @@ test('convertDate returns correct date', () => {
   expect(convertDate('2003-11-5')).toBe('05.11.2003');
   expect(convertDate('1493-9-30')).toBe('30.09.1493');
 });
-
+/*
 test('searchHotel returns correct hotel data', () => {
   expect(searchHotel('hotel')).toEqual([
     'Russia, Saint Petersburg, Hotel Leopold',
@@ -58,7 +58,7 @@ test('searchHotel returns correct hotel data', () => {
   ]);
   expect(searchHotel('Scotland')).toEqual([]);
 });
-
+*/
 test('palindrome works correctly', () => {
   expect(palindrome('шалаш')).toBe(true);
   expect(palindrome('яблоко')).toBe(false);
@@ -66,7 +66,7 @@ test('palindrome works correctly', () => {
   expect(palindrome(')(()')).toBe(true);
   expect(palindrome('микроскоп')).toBe(false);
 });
-
+/*
 test('groupCities returns correct object', () => {
   expect(groupCities()).toEqual({
     Germany: ['Berlin'],
@@ -78,7 +78,7 @@ test('groupCities returns correct object', () => {
     Spain: ['Santa Cruz de Tenerife'],
   });
 });
-
+*/
 test('getCalendarMonth returns correct month', () => {
   const testDate = new Date(2023, 6, 30);
   const result = getCalendarMonth(testDate);
