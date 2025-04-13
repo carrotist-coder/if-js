@@ -132,6 +132,42 @@
                 name="description"
                 value="2 Adults — 0 Children — 1 Room"
               />
+              <div class="guests-dropdown" id="guests-dropdown">
+                <div class="guests-row">
+                  <label>Adults</label>
+                  <button type="button" class="guests-btn-decrease">−</button>
+                  <span id="adults-count">1</span>
+                  <button type="button" class="guests-btn-increase">+</button>
+                </div>
+                <div class="guests-row">
+                  <label>Children</label>
+                  <button
+                    type="button"
+                    class="guests-btn-decrease guests-btn-disabled"
+                  >
+                    −
+                  </button>
+                  <span id="children-count">0</span>
+                  <button type="button" class="guests-btn-increase">+</button>
+                </div>
+                <div class="guests-row">
+                  <label>Rooms</label>
+                  <button
+                    type="button"
+                    class="guests-btn-decrease guests-btn-disabled"
+                  >
+                    −
+                  </button>
+                  <span id="rooms-count">1</span>
+                  <button type="button" class="guests-btn-increase">+</button>
+                </div>
+                <div class="guests-row" id="child-age-container">
+                  <label id="child-age-label"
+                    >What is the age of the child you're travelling with?</label
+                  >
+                  <div id="child-age-selects"></div>
+                </div>
+              </div>
               <button class="search-form__button">Search</button>
             </div>
           </form>
@@ -460,6 +496,7 @@
         </p>
       </div>
     </footer>
+    <script type="module" src="src/main.js"></script>
     <script type="module" src="./src/utils/imageRendering.js"></script>
   </body>
 </html>
