@@ -9,8 +9,8 @@ import {
   sum,
 } from '../utils/functions.js';
 import { obj1, obj2, obj3 } from '../consts/hotelsArray.js';
-import { Students } from '../entities/Student.js';
-import { studentsData } from '../consts/studentsData.js';
+import { Students } from './entities/Student.js';
+import { studentsData } from './studentsData.js';
 
 const students = new Students(studentsData);
 console.log(students.getInfo());

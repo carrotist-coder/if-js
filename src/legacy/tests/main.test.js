@@ -8,11 +8,11 @@ import {
   palindrome,
   searchHotel,
   sum,
-} from '../src/utils/functions';
-import { obj1, obj2, obj3 } from '../src/consts/hotelsArray.js';
-import { Student, Students } from '../src/entities/Student';
-import { studentsData } from '../src/consts/studentsData';
-import User from '../src/entities/User';
+} from '../../utils/functions';
+import { obj1, obj2, obj3 } from '../../consts/hotelsArray.js';
+import { Student, Students } from '../entities/Student';
+import { studentsData } from '../studentsData';
+import User from '../entities/User';
 
 test('sum(a)(b) must be equal to a + b', () => {
   const num1 = randNumber();
