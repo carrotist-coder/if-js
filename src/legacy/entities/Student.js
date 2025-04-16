@@ -1,5 +1,5 @@
 import User from './User.js';
-import { YEAR } from '../utils/functions.js';
+import { YEAR } from '../../utils/functions.js';
 
 export class Student extends User {
   constructor({ admissionYear, courseName, firstName, lastName }) {

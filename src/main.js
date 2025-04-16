@@ -1,48 +1,127 @@
-import {
-  convertDate,
-  deepEqual,
-  getCalendarMonth,
-  getColor,
-  groupCities,
-  palindrome,
-  searchHotel,
-  sum,
-} from './utils/functions.js';
-import { obj1, obj2, obj3 } from './consts/hotelsArray.js';
-import { Students } from './entities/Student.js';
-import { studentsData } from './consts/studentsData.js';
+const descriptionInput = document.getElementById('description');
+const dropdown = document.getElementById('guests-dropdown');
 
-const students = new Students(studentsData);
-console.log(students.getInfo());
-
-console.log(deepEqual(obj1, obj2)); // true
-console.log(deepEqual(obj1, obj3)); // false
-
-console.log('шалаш: ', palindrome('шалаш')); // true
-console.log('яблоко: ', palindrome('яблоко')); // false
-
-console.log(groupCities());
-console.log(searchHotel('hotel'));
-
-console.log(getCalendarMonth());
-
-const date = '2020-11-26';
-console.log(convertDate(date)); // '26.11.2020'
-
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
-const text3 = document.getElementById('text3');
-
-text1.addEventListener('click', (event) => {
-  event.target.style.color = getColor();
+// Показ фильтров
+descriptionInput.addEventListener('click', () => {
+  dropdown.style.display = 'block';
+  const rect = descriptionInput.getBoundingClientRect();
+  dropdown.style.top = rect.bottom + window.scrollY + 'px';
+  dropdown.style.left = rect.left + 'px';
 });
 
-text2.addEventListener('click', (event) => {
-  event.target.style.color = getColor();
+document.addEventListener('click', (e) => {
+  if (!dropdown.contains(e.target) && e.target !== descriptionInput) {
+    dropdown.style.display = 'none';
+  }
 });
 
-text3.addEventListener('click', (event) => {
-  event.target.style.color = getColor();
+const counts = {
+  adults: 1,
+  children: 0,
+  rooms: 1,
+};
+
+const limits = {
+  adults: { min: 1, max: 30 },
+  children: { min: 0, max: 10 },
+  rooms: { min: 1, max: 30 },
+};
+
+const updateDisplay = () => {
+  const map = {
+    adults: 'adults-count',
+    children: 'children-count',
+    rooms: 'rooms-count',
+  };
+
+  Object.keys(counts).forEach((key) => {
+    const value = counts[key];
+    const span = document.getElementById(map[key]);
+    span.innerText = value;
+
+    const row = span.closest('.guests-row');
+    const incBtn = row.querySelector('.guests-btn-increase');
+    const decBtn = row.querySelector('.guests-btn-decrease');
+
+    // Проверка на максимум
+    if (value >= limits[key].max) {
+      incBtn.classList.add('guests-btn-disabled');
+      incBtn.disabled = true;
+    } else {
+      incBtn.classList.remove('guests-btn-disabled');
+      incBtn.disabled = false;
+    }
+
+    // Проверка на минимум
+    if (value <= limits[key].min) {
+      decBtn.classList.add('guests-btn-disabled');
+      decBtn.disabled = true;
+    } else {
+      decBtn.classList.remove('guests-btn-disabled');
+      decBtn.disabled = false;
+    }
+  });
+};
+
+const childAgeContainer = document.getElementById('child-age-container');
+const childAgeSelects = document.getElementById('child-age-selects');
+
+const createAgeSelect = () => {
+  const select = document.createElement('select');
+  select.className = 'child-age-select';
+
+  for (let i = 0; i <= 17; i++) {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = `${i} years old`;
+    select.appendChild(option);
+  }
+
+  childAgeSelects.appendChild(select);
+};
+
+const removeLastAgeSelect = () => {
+  if (childAgeSelects.lastChild) {
+    childAgeSelects.removeChild(childAgeSelects.lastChild);
+  }
+};
+
+const updateChildrenVisuals = () => {
+  if (counts.children > 0) {
+    childAgeContainer.style.display = 'flex';
+    while (childAgeSelects.childElementCount < counts.children) {
+      createAgeSelect();
+    }
+    while (childAgeSelects.childElementCount > counts.children) {
+      removeLastAgeSelect();
+    }
+  } else {
+    childAgeContainer.style.display = 'none';
+    childAgeSelects.innerHTML = '';
+  }
+};
+
+document.querySelectorAll('.guests-row').forEach((row) => {
+  const label = row.querySelector('label').innerText.toLowerCase();
+  const increaseBtn = row.querySelector('.guests-btn-increase');
+  const decreaseBtn = row.querySelector('.guests-btn-decrease');
+
+  increaseBtn.addEventListener('click', () => {
+    if (counts[label] < limits[label].max) {
+      counts[label]++;
+      updateDisplay();
+      if (label === 'children') updateChildrenVisuals();
+    }
+  });
+
+  decreaseBtn.addEventListener('click', () => {
+    if (counts[label] > limits[label].min) {
+      counts[label]--;
+      updateDisplay();
+      if (label === 'children') updateChildrenVisuals();
+    }
+  });
 });
 
-console.log(sum(5)(2)); // 7
+updateDisplay();
+updateChildrenVisuals();
