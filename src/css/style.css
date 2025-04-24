@@ -416,6 +416,7 @@ main {
 
 .homes-guests-card img {
   width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   max-height: 296px;
   max-width: 296px;
