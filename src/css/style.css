@@ -381,7 +381,8 @@ main {
   height: 100px;
 }
 
-.homes-guests {
+.homes-guests,
+.available-hotels {
   background-color: #eaf0f9;
 }
 
