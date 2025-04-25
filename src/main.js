@@ -130,3 +130,52 @@ document.querySelectorAll('.guests-row').forEach((row) => {
 
 updateDisplay();
 updateChildrenVisuals();
+
+function fetchHotels(search) {
+  const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Error status: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      renderHotelCards(
+        data,
+        document.querySelector('.available-hotels .cards'),
+      );
+    })
+    .catch((error) => {
+      console.error('Error fetching hotels:', error);
+    });
+}
+
+function renderHotelCards(hotels, container) {
+  container.innerHTML = '';
+  if (!hotels || hotels.length === 0) {
+    const nothingFound = document.createElement('div');
+    nothingFound.className = 'nothing-found';
+    nothingFound.textContent = 'Nothing found...';
+    container.appendChild(nothingFound);
+    return;
+  }
+  hotels.forEach((hotel) => {
+    const card = document.createElement('figure');
+    card.className = 'homes-guests-card';
+    card.innerHTML = `
+      <img src="${hotel.imageUrl}" alt="${hotel.name}">
+      <figcaption>
+        <p>${hotel.name}</p>
+        <p>${hotel.country}, ${hotel.city}</p>
+      </figcaption>
+    `;
+    container.appendChild(card);
+  });
+}
+
+document.querySelector('.search-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const searchQuery = document.getElementById('destination').value.trim();
+  if (searchQuery) {
+    fetchHotels(searchQuery);
+  }
+});
