@@ -102,9 +102,14 @@ const updateChildrenVisuals = () => {
 };
 
 document.querySelectorAll('.guests-row').forEach((row) => {
-  const label = row.querySelector('label').innerText.toLowerCase();
+  const labelElement = row.querySelector('label');
+  if (!labelElement) return;
+
+  const label = labelElement.innerText.toLowerCase();
   const increaseBtn = row.querySelector('.guests-btn-increase');
   const decreaseBtn = row.querySelector('.guests-btn-decrease');
+
+  if (!increaseBtn || !decreaseBtn) return;
 
   increaseBtn.addEventListener('click', () => {
     if (counts[label] < limits[label].max) {
