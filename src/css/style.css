@@ -381,7 +381,8 @@ main {
   height: 100px;
 }
 
-.homes-guests {
+.homes-guests,
+.available-hotels {
   background-color: #eaf0f9;
 }
 
@@ -404,8 +405,17 @@ main {
   gap: 16px;
 }
 
-.homes-guests .cards {
+.homes-guests .cards,
+.available-hotels .cards {
   flex-wrap: wrap;
+}
+
+.available-hotels .nothing-found {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  color: #ff0000;
+  margin: 0 auto;
 }
 
 .homes-guests-card {
@@ -416,6 +426,7 @@ main {
 
 .homes-guests-card img {
   width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   max-height: 296px;
   max-width: 296px;
