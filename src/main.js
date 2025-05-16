@@ -1,31 +1,9 @@
+import { counts, limits } from './utils/consts';
+
 const descriptionInput = document.getElementById('description');
 const dropdown = document.getElementById('guests-dropdown');
-
-// Показ фильтров
-descriptionInput.addEventListener('click', () => {
-  dropdown.style.display = 'block';
-  const rect = descriptionInput.getBoundingClientRect();
-  dropdown.style.top = rect.bottom + window.scrollY + 'px';
-  dropdown.style.left = rect.left + 'px';
-});
-
-document.addEventListener('click', (e) => {
-  if (!dropdown.contains(e.target) && e.target !== descriptionInput) {
-    dropdown.style.display = 'none';
-  }
-});
-
-const counts = {
-  adults: 1,
-  children: 0,
-  rooms: 1,
-};
-
-const limits = {
-  adults: { min: 1, max: 30 },
-  children: { min: 0, max: 10 },
-  rooms: { min: 1, max: 30 },
-};
+const childAgeContainer = document.getElementById('child-age-container');
+const childAgeSelects = document.getElementById('child-age-selects');
 
 const updateDisplay = () => {
   const map = {
@@ -63,9 +41,6 @@ const updateDisplay = () => {
   });
 };
 
-const childAgeContainer = document.getElementById('child-age-container');
-const childAgeSelects = document.getElementById('child-age-selects');
-
 const createAgeSelect = () => {
   const select = document.createElement('select');
   select.className = 'child-age-select';
@@ -101,10 +76,70 @@ const updateChildrenVisuals = () => {
   }
 };
 
+const fetchHotels = (search) => {
+  const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Error status: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      renderHotelCards(
+        data,
+        document.querySelector('.available-hotels .cards'),
+      );
+    })
+    .catch((error) => {
+      console.error('Error fetching hotels:', error);
+    });
+};
+
+const renderHotelCards = (hotels, container) => {
+  container.innerHTML = '';
+  if (!hotels || hotels.length === 0) {
+    const nothingFound = document.createElement('div');
+    nothingFound.className = 'nothing-found';
+    nothingFound.textContent = 'Nothing found...';
+    container.appendChild(nothingFound);
+    return;
+  }
+  hotels.forEach((hotel) => {
+    const card = document.createElement('figure');
+    card.className = 'homes-guests-card';
+    card.innerHTML = `
+      <img src="${hotel.imageUrl}" alt="${hotel.name}">
+      <figcaption>
+        <p>${hotel.name}</p>
+        <p>${hotel.country}, ${hotel.city}</p>
+      </figcaption>
+    `;
+    container.appendChild(card);
+  });
+};
+
+// Показ фильтров
+descriptionInput.addEventListener('click', () => {
+  dropdown.style.display = 'block';
+  const rect = descriptionInput.getBoundingClientRect();
+  dropdown.style.top = rect.bottom + window.scrollY + 'px';
+  dropdown.style.left = rect.left + 'px';
+});
+
+document.addEventListener('click', (e) => {
+  if (!dropdown.contains(e.target) && e.target !== descriptionInput) {
+    dropdown.style.display = 'none';
+  }
+});
+
 document.querySelectorAll('.guests-row').forEach((row) => {
-  const label = row.querySelector('label').innerText.toLowerCase();
+  const labelElement = row.querySelector('label');
+  if (!labelElement) return;
+
+  const label = labelElement.innerText.toLowerCase();
   const increaseBtn = row.querySelector('.guests-btn-increase');
   const decreaseBtn = row.querySelector('.guests-btn-decrease');
+
+  if (!increaseBtn || !decreaseBtn) return;
 
   increaseBtn.addEventListener('click', () => {
     if (counts[label] < limits[label].max) {
@@ -121,6 +156,14 @@ document.querySelectorAll('.guests-row').forEach((row) => {
       if (label === 'children') updateChildrenVisuals();
     }
   });
+});
+
+document.querySelector('.search-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const searchQuery = document.getElementById('destination').value.trim();
+  if (searchQuery) {
+    fetchHotels(searchQuery);
+  }
 });
 
 updateDisplay();

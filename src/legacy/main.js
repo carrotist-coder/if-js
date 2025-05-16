@@ -7,8 +7,8 @@ import {
   palindrome,
   searchHotel,
   sum,
-} from '../utils/functions.js';
-import { obj1, obj2, obj3 } from '../consts/hotelsArray.js';
+} from './functions.js';
+import { obj1, obj2, obj3 } from './consts/hotelsArray.js';
 import { Students } from './entities/Student.js';
 import { studentsData } from './studentsData.js';
 
