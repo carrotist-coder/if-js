@@ -1,4 +1,5 @@
 import { counts, limits } from './utils/consts.js';
+import { renderHotels } from './utils/imageRendering.js';
 
 const descriptionInput = document.getElementById('description');
 const dropdown = document.getElementById('guests-dropdown');
@@ -76,29 +77,6 @@ const updateChildrenVisuals = () => {
   }
 };
 
-const renderHotelCards = (hotels, container) => {
-  container.innerHTML = '';
-  if (!hotels || hotels.length === 0) {
-    const nothingFound = document.createElement('div');
-    nothingFound.className = 'nothing-found';
-    nothingFound.textContent = 'Nothing found...';
-    container.appendChild(nothingFound);
-    return;
-  }
-  hotels.forEach((hotel) => {
-    const card = document.createElement('figure');
-    card.className = 'homes-guests-card';
-    card.innerHTML = `
-      <img src="${hotel.imageUrl}" alt="${hotel.name}">
-      <figcaption>
-        <p>${hotel.name}</p>
-        <p>${hotel.country}, ${hotel.city}</p>
-      </figcaption>
-    `;
-    container.appendChild(card);
-  });
-};
-
 const fetchHotels = (search) => {
   const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
   fetch(url)
@@ -107,10 +85,7 @@ const fetchHotels = (search) => {
       return response.json();
     })
     .then((data) => {
-      renderHotelCards(
-        data,
-        document.querySelector('.available-hotels .cards'),
-      );
+      renderHotels(data, document.querySelector('.available-hotels .cards'));
     })
     .catch((error) => {
       console.error('Error fetching hotels:', error);

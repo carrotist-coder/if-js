@@ -1,12 +1,15 @@
-const renderPopularHotels = (hotelsData, container) => {
+export const renderHotels = (hotels, container) => {
   container.innerHTML = '';
 
-  if (!hotelsData || hotelsData.length === 0) {
-    container.innerHTML = '<p>Не удалось загрузить данные.</p>';
+  if (!hotels || hotels.length === 0) {
+    const nothingFound = document.createElement('div');
+    nothingFound.className = 'nothing-found';
+    nothingFound.textContent = 'Nothing found...';
+    container.appendChild(nothingFound);
     return;
   }
 
-  hotelsData.forEach((hotel) => {
+  hotels.forEach((hotel) => {
     const card = document.createElement('div');
     card.classList.add('homes-guests-card');
     card.innerHTML = `
@@ -25,6 +28,13 @@ const renderPopularHotels = (hotelsData, container) => {
 const fetchPopularHotels = () => {
   const container = document.querySelector('.homes-guests .cards');
 
+  const cachedData = sessionStorage.getItem('popularHotels');
+  if (cachedData) {
+    const hotels = JSON.parse(cachedData);
+    renderHotels(hotels, container);
+    return;
+  }
+
   fetch('https://if-student-api.onrender.com/api/hotels/popular')
     .then((response) => {
       if (!response.ok) {
@@ -33,7 +43,8 @@ const fetchPopularHotels = () => {
       return response.json();
     })
     .then((data) => {
-      renderPopularHotels(data, container);
+      sessionStorage.setItem('popularHotels', JSON.stringify(data));
+      renderHotels(data, container);
     })
     .catch((error) => {
       console.error('Fetch error: ', error);
