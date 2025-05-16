@@ -76,24 +76,6 @@ const updateChildrenVisuals = () => {
   }
 };
 
-const fetchHotels = (search) => {
-  const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) throw new Error(`Error status: ${response.status}`);
-      return response.json();
-    })
-    .then((data) => {
-      renderHotelCards(
-        data,
-        document.querySelector('.available-hotels .cards'),
-      );
-    })
-    .catch((error) => {
-      console.error('Error fetching hotels:', error);
-    });
-};
-
 const renderHotelCards = (hotels, container) => {
   container.innerHTML = '';
   if (!hotels || hotels.length === 0) {
@@ -115,6 +97,24 @@ const renderHotelCards = (hotels, container) => {
     `;
     container.appendChild(card);
   });
+};
+
+const fetchHotels = (search) => {
+  const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error(`Error status: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      renderHotelCards(
+        data,
+        document.querySelector('.available-hotels .cards'),
+      );
+    })
+    .catch((error) => {
+      console.error('Error fetching hotels:', error);
+    });
 };
 
 // Показ фильтров
