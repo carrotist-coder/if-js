@@ -1,18 +1,7 @@
+import { counts, limits } from './utils/consts';
+
 const descriptionInput = document.getElementById('description');
 const dropdown = document.getElementById('guests-dropdown');
-
-const counts = {
-  adults: 1,
-  children: 0,
-  rooms: 1,
-};
-
-const limits = {
-  adults: { min: 1, max: 30 },
-  children: { min: 0, max: 10 },
-  rooms: { min: 1, max: 30 },
-};
-
 const childAgeContainer = document.getElementById('child-age-container');
 const childAgeSelects = document.getElementById('child-age-selects');
 
