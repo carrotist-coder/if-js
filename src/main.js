@@ -1,4 +1,4 @@
-import { counts, limits } from './utils/consts';
+import { counts, limits } from './utils/consts.js';
 
 const descriptionInput = document.getElementById('description');
 const dropdown = document.getElementById('guests-dropdown');
