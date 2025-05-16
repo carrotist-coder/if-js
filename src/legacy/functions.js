@@ -1,4 +1,4 @@
-import { data } from '../consts/hotelsArray.js';
+import { data } from './consts/hotelsArray.js';
 
 export const YEAR = 2020;
 
