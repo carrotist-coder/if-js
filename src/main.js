@@ -77,8 +77,26 @@ const updateChildrenVisuals = () => {
   }
 };
 
-const fetchHotels = (search) => {
-  const url = `https://if-student-api.onrender.com/api/hotels?search=${encodeURIComponent(search)}`;
+const fetchHotels = () => {
+  const search = document.getElementById('destination').value.trim();
+  const adults = counts.adults;
+  const rooms = counts.rooms;
+
+  const childrenAges = [];
+  const ageSelects = document.querySelectorAll('.child-age-select');
+  ageSelects.forEach((select) => {
+    childrenAges.push(select.value);
+  });
+
+  const url = new URL('https://if-student-api.onrender.com/api/hotels');
+  url.searchParams.append('search', search);
+  url.searchParams.append('adults', adults);
+  url.searchParams.append('rooms', rooms);
+
+  if (childrenAges.length > 0) {
+    url.searchParams.append('children', childrenAges.join(','));
+  }
+
   fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error(`Error status: ${response.status}`);
@@ -135,10 +153,7 @@ document.querySelectorAll('.guests-row').forEach((row) => {
 
 document.querySelector('.search-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  const searchQuery = document.getElementById('destination').value.trim();
-  if (searchQuery) {
-    fetchHotels(searchQuery);
-  }
+  fetchHotels();
 });
 
 updateDisplay();
