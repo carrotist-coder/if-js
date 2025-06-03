@@ -40,6 +40,8 @@ const updateDisplay = () => {
       decBtn.disabled = false;
     }
   });
+
+  descriptionInput.value = `${counts.adults} Adult${counts.adults !== 1 ? 's' : ''} — ${counts.children} Child${counts.children !== 1 ? 'ren' : ''} — ${counts.rooms} Room${counts.rooms !== 1 ? 's' : ''}`;
 };
 
 const createAgeSelect = () => {

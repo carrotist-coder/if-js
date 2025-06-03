@@ -401,7 +401,6 @@ main {
 .cards {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
   gap: 16px;
 }
 
