@@ -1,3 +1,5 @@
+import { hotelsNameBubbleSort } from './bubbleSort.js';
+
 export const renderHotels = (hotels, container) => {
   container.innerHTML = '';
 
@@ -9,7 +11,8 @@ export const renderHotels = (hotels, container) => {
     return;
   }
 
-  hotels.forEach((hotel) => {
+  let sortedHotels = hotelsNameBubbleSort(hotels);
+  sortedHotels.forEach((hotel) => {
     const card = document.createElement('div');
     card.classList.add('homes-guests-card');
     card.innerHTML = `
