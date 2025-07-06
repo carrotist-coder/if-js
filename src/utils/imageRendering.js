@@ -28,7 +28,7 @@ export const renderHotels = (hotels, container) => {
   });
 };
 
-const fetchPopularHotels = () => {
+export const fetchPopularHotels = () => {
   const container = document.querySelector('.homes-guests .cards');
 
   const cachedData = sessionStorage.getItem('popularHotels');
@@ -54,5 +54,3 @@ const fetchPopularHotels = () => {
       container.innerHTML = '<p>Не удалось загрузить данные.</p>';
     });
 };
-
-document.addEventListener('DOMContentLoaded', fetchPopularHotels);
